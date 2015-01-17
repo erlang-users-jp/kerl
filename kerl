@@ -22,6 +22,7 @@
 # THE SOFTWARE.
 
 ERLANG_DOWNLOAD_URL=http://www.erlang.org/download
+ERLANG_DOWNLOAD_MIRROR=http://download.basho.co.jp.cs-ap-e2.ycloud.jp/otp/download
 
 KERL_BASE_DIR="$HOME/.kerl"
 KERL_CONFIG="$HOME/.kerlrc"
@@ -689,7 +690,8 @@ download()
     if [ ! -f "$KERL_DOWNLOAD_DIR/$1" ]; then
         echo "Downloading $1 to $KERL_DOWNLOAD_DIR"
         mkdir -p "$KERL_DOWNLOAD_DIR"
-        curl -L "$ERLANG_DOWNLOAD_URL/$1" > "$KERL_DOWNLOAD_DIR/$1"
+        ##curl -L "$ERLANG_DOWNLOAD_URL/$1" > "$KERL_DOWNLOAD_DIR/$1"
+        curl -L "$ERLANG_DOWNLOAD_MIRROR/$1" > "$KERL_DOWNLOAD_DIR/$1"
         update_checksum_file
     fi
     ensure_checksum_file
